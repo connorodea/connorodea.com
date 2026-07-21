@@ -82,8 +82,33 @@ body {
 .heavy {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.045em;
   line-height: 0.86;
+}
+
+/* Animated scroll cue */
+.scroll-line {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: #fff;
+  animation: scrollCue 1.8s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+@keyframes scrollCue {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(280%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-line::after { animation: none; }
 }
 
 /* The orb — CSS-only iridescence, no WebGL ------------------------------- */
@@ -206,3 +231,8 @@ body {
     transform: none;
   }
 }
+
+/* Lenis smooth-scroll base */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }

@@ -4,7 +4,7 @@ import { useEffect, useRef, type ElementType, type ReactNode } from "react";
 
 export function Reveal({
   children,
-  as: Tag = "div",
+  as = "div",
   delay = 0,
   className = "",
 }: {
@@ -13,7 +13,8 @@ export function Reveal({
   delay?: number;
   className?: string;
 }) {
-  const ref = useRef<HTMLElement>(null);
+  const Tag = as as "div";
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;

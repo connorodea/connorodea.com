@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, DM_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -65,6 +66,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <SmoothScroll />
         <div className="grain" aria-hidden="true" />
         {children}
       </body>

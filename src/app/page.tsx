@@ -49,8 +49,8 @@ export default function Home() {
         <dl className="grid gap-x-14 gap-y-12 sm:grid-cols-3">
           {CAPABILITIES.map((c, i) => (
             <Reveal key={c.k} delay={i * 90}>
-              <dt className="serif-it text-[1.9rem] leading-tight">{c.k}</dt>
-              <dd className="mono mt-4 text-white/60">{c.v}</dd>
+              <dt className="serif-it text-[2.1rem] leading-tight text-white">{c.k}</dt>
+              <dd className="mono mt-4 text-[0.82rem] leading-[1.9] text-white/55">{c.v}</dd>
             </Reveal>
           ))}
         </dl>
@@ -74,15 +74,15 @@ export default function Home() {
             </div>
 
             <div className="space-y-5">
-              <p className="serif-it text-[1.75rem] leading-[1.25] text-white">
+              <p className="serif-it text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.15] text-white">
                 I am an engineer who ships.
               </p>
-              <p className="mono text-white/60">
+              <p className="mono text-[0.82rem] leading-[1.9] text-white/55">
                 Most of what I build starts as a problem I ran into myself, or
                 watched somebody else lose a week to, and ends as software that
                 is actually deployed and actually used.
               </p>
-              <p className="mono text-white/60">
+              <p className="mono text-[0.82rem] leading-[1.9] text-white/55">
                 The range is deliberate. Working across video, infrastructure,
                 commerce, health, consumer, real estate, and finance means the
                 patterns start to rhyme — a retrieval problem in litigation
@@ -90,7 +90,7 @@ export default function Home() {
                 over. That is where the speed comes from. Not shortcuts,
                 transfer.
               </p>
-              <p className="mono text-white">
+              <p className="mono text-[0.82rem] leading-[1.9] text-white">
                 If you are building something and the hard part is that it has
                 never been built before, that is the work I want.
               </p>
