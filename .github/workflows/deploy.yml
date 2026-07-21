@@ -1,0 +1,42 @@
+name: Deploy connorodea.com
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-connorodea
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Deploy to hetznerCO
+        uses: burnett01/rsync-deployments@7.0.2
+        with:
+          switches: -az --delete
+          path: out/
+          remote_path: /var/www/connorodea.com/html/
+          remote_host: ${{ secrets.HETZNER_CO_HOST }}
+          remote_user: ${{ secrets.HETZNER_CO_USER }}
+          remote_key: ${{ secrets.HETZNER_CO_SSH_KEY }}
+
+      - name: Reload nginx
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HETZNER_CO_HOST }}
+          username: ${{ secrets.HETZNER_CO_USER }}
+          key: ${{ secrets.HETZNER_CO_SSH_KEY }}
+          script: sudo nginx -t && sudo systemctl reload nginx
