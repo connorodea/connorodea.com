@@ -36,8 +36,14 @@ export const metadata: Metadata = {
     url: "https://connorodea.com",
     siteName: "Connor O'Dea",
     type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    title: "Connor O'Dea — applied AI engineer",
+    description: "I build AI-native products end to end, across seven domains.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({

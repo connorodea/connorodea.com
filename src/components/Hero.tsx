@@ -30,9 +30,9 @@ function LocalTime() {
 
 export function Hero() {
   return (
-    <section className="relative min-h-[100svh] px-[var(--gutter)] pt-6 pb-8">
+    <section className="relative px-[var(--gutter)] pt-6 pb-14 lg:min-h-[100svh] lg:pb-8">
       {/* Micro-grid header */}
-      <div className="grid grid-cols-2 gap-x-6 gap-y-7 border-b pb-7 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-x-6 gap-y-6 border-b pb-6 sm:grid-cols-4 sm:gap-y-7 sm:pb-7">
         <div>
           <p className="mono-up text-white">Connor</p>
           <p className="mono-up text-white">O&rsquo;Dea</p>
@@ -48,7 +48,7 @@ export function Hero() {
           </a>
         </div>
 
-        <div>
+        <div className="hidden sm:block">
           <p className="mono">TypeScript, Python, Swift</p>
           <p className="mono">Next.js, Hono, FastAPI</p>
           <p className="mono">Claude, MCP, Postgres</p>
@@ -78,7 +78,7 @@ export function Hero() {
       </div>
 
       {/* Stage */}
-      <div className="relative mt-[clamp(2.5rem,8vh,5rem)] grid items-center gap-y-14 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:gap-x-8">
+      <div className="relative mt-[clamp(1.5rem,6vh,4rem)] grid items-center gap-y-9 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:gap-x-8 lg:gap-y-14">
         {/* Lockup */}
         <h1 className="relative z-10 order-2 lg:order-1">
           <span className="serif-it block whitespace-nowrap text-[clamp(2.9rem,6.6vw,5.6rem)] leading-[0.95]">
@@ -90,7 +90,7 @@ export function Hero() {
         </h1>
 
         {/* Orb */}
-        <div className="order-1 w-[clamp(280px,42vw,560px)] justify-self-center lg:order-2">
+        <div className="order-1 w-[clamp(200px,54vw,560px)] justify-self-center lg:order-2">
           <Orb />
         </div>
 
@@ -107,6 +107,20 @@ export function Hero() {
             <span className="text-white">seven industries</span> in the last
             eight months, and the log below is the whole argument.
           </p>
+        </div>
+      </div>
+
+      {/* Mobile: the desktop strip is absolutely positioned, so mobile gets
+          its own inline version rather than nothing. */}
+      <div className="mt-12 flex items-end justify-between border-t pt-4 sm:hidden">
+        <div>
+          <p className="mono">Local time</p>
+          <LocalTime />
+        </div>
+        <div className="flex flex-col items-end">
+          <a href="https://github.com/connorodea" className="mono">GitHub</a>
+          <a href="https://odeaworks.com" className="mono">Odea Works</a>
+          <a href="https://preecursor.com" className="mono">Preecursor</a>
         </div>
       </div>
 
