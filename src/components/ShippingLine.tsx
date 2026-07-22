@@ -115,8 +115,9 @@ export function ShippingLine() {
                         className="mark block h-full w-[2px] origin-bottom rounded-[1px] transition-[transform,opacity] duration-300"
                         style={{
                           background: DOMAINS[lane].color,
-                          opacity: on ? 1 : 0.62,
-                          transform: on ? "scaleY(1)" : "scaleY(0.62)",
+                          opacity: on ? 1 : 0.55,
+                          transform: on ? "scaleY(1)" : "scaleY(0.6)",
+                          boxShadow: on ? `0 0 10px ${DOMAINS[lane].color}` : "none",
                           animationDelay: `${m.delay}ms`,
                         }}
                       />

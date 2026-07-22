@@ -86,6 +86,53 @@ body {
   line-height: 0.86;
 }
 
+/* Ambient spectral glows — the orb's light spilling into the page below the
+   hero. Fixed, blurred, very low opacity; drift slowly. Pure atmosphere. */
+.aura {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.aura span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.14;
+  will-change: transform;
+}
+.aura span:nth-child(1) {
+  width: 44vw; height: 44vw; left: -8vw; top: 12%;
+  background: radial-gradient(circle, #ff4fa3, transparent 68%);
+  animation: drift1 26s ease-in-out infinite;
+}
+.aura span:nth-child(2) {
+  width: 40vw; height: 40vw; right: -6vw; top: 40%;
+  background: radial-gradient(circle, #3aa0ff, transparent 68%);
+  animation: drift2 32s ease-in-out infinite;
+}
+.aura span:nth-child(3) {
+  width: 36vw; height: 36vw; left: 30%; bottom: -6%;
+  background: radial-gradient(circle, #8f6bff, transparent 68%);
+  animation: drift3 29s ease-in-out infinite;
+}
+@keyframes drift1 { 50% { transform: translate(8vw, 6vh); } }
+@keyframes drift2 { 50% { transform: translate(-7vw, -5vh); } }
+@keyframes drift3 { 50% { transform: translate(4vw, -7vh); } }
+@media (prefers-reduced-motion: reduce) {
+  .aura span { animation: none; }
+}
+
+/* Big serif index numeral for section headers and work rows */
+.index {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
 /* Animated scroll cue */
 .scroll-line {
   position: relative;

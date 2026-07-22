@@ -3,7 +3,7 @@ import { Hero } from "@/components/Hero";
 import { ShippingLine } from "@/components/ShippingLine";
 import { WorkRows } from "@/components/WorkRows";
 import { Reveal } from "@/components/Reveal";
-import { Section, Shell } from "@/components/Section";
+import { Section } from "@/components/Section";
 
 const CAPABILITIES = [
   {
@@ -29,120 +29,178 @@ const FACTS: [string, string][] = [
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
+    <>
+      {/* Ambient spectral light spilling from the hero into the page below */}
+      <div className="aura" aria-hidden>
+        <span />
+        <span />
+        <span />
+      </div>
 
-      {/* ── Shipping log ─────────────────────────────────────────────── */}
-      <Section id="log" label="The log">
-        <Reveal>
-          <ShippingLine />
-        </Reveal>
-      </Section>
+      <main className="relative z-10">
+        <Hero />
 
-      {/* ── Work ─────────────────────────────────────────────────────── */}
-      <Section id="work" label="Selected work" note="Eight of forty-six">
-        <WorkRows />
-      </Section>
+        {/* ── Shipping log ───────────────────────────────────────────── */}
+        <Section
+          id="log"
+          index="01"
+          label="The log"
+          title={
+            <>
+              Forty-six shipped,
+              <br />
+              seven industries.
+            </>
+          }
+          note="Live from GitHub"
+        >
+          <Reveal>
+            <ShippingLine />
+          </Reveal>
+        </Section>
 
-      {/* ── Capabilities ─────────────────────────────────────────────── */}
-      <Section id="capabilities" label="What I do">
-        <dl className="grid gap-x-14 gap-y-12 sm:grid-cols-3">
-          {CAPABILITIES.map((c, i) => (
-            <Reveal key={c.k} delay={i * 90}>
-              <dt className="serif-it text-[2.1rem] leading-tight text-white">{c.k}</dt>
-              <dd className="mono mt-4 text-[0.82rem] leading-[1.9] text-white/55">{c.v}</dd>
-            </Reveal>
-          ))}
-        </dl>
-      </Section>
+        {/* ── Work ───────────────────────────────────────────────────── */}
+        <Section
+          id="work"
+          index="02"
+          label="Selected work"
+          title={<>The evidence.</>}
+          note="Eight of forty-six"
+        >
+          <WorkRows />
+        </Section>
 
-      {/* ── About ────────────────────────────────────────────────────── */}
-      <Section id="about" label="About">
-        <Reveal>
-          <div className="grid gap-12 lg:grid-cols-[auto_minmax(0,56ch)_1fr] lg:gap-16">
-            <div className="w-[132px] shrink-0">
-              <div className="relative overflow-hidden border">
-                <Image
-                  src="/connor.jpg"
-                  alt="Connor O'Dea"
-                  width={460}
-                  height={460}
-                  className="w-full grayscale contrast-[1.1] brightness-[.95]"
-                />
-              </div>
-              <p className="mono mt-2 border-t pt-2">Denver, CO</p>
-            </div>
+        {/* ── Capabilities ───────────────────────────────────────────── */}
+        <Section
+          id="capabilities"
+          index="03"
+          label="What I do"
+          title={<>What I can build for you.</>}
+        >
+          <dl className="grid gap-x-14 gap-y-16 sm:grid-cols-3">
+            {CAPABILITIES.map((c, i) => (
+              <Reveal key={c.k} delay={i * 100}>
+                <dt className="index mb-6 block text-[1.4rem] text-white/30">
+                  {String(i + 1).padStart(2, "0")}
+                </dt>
+                <p className="serif-it text-[clamp(1.7rem,2.6vw,2.3rem)] leading-[1.05] text-white">
+                  {c.k}
+                </p>
+                <p className="mono mt-5 text-[0.82rem] leading-[1.9] text-white/50">
+                  {c.v}
+                </p>
+              </Reveal>
+            ))}
+          </dl>
+        </Section>
 
-            <div className="space-y-5">
-              <p className="serif-it text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.15] text-white">
-                I am an engineer who ships.
-              </p>
-              <p className="mono text-[0.82rem] leading-[1.9] text-white/55">
-                Most of what I build starts as a problem I ran into myself, or
-                watched somebody else lose a week to, and ends as software that
-                is actually deployed and actually used.
-              </p>
-              <p className="mono text-[0.82rem] leading-[1.9] text-white/55">
-                The range is deliberate. Working across video, infrastructure,
-                commerce, health, consumer, real estate, and finance means the
-                patterns start to rhyme — a retrieval problem in litigation
-                looks a lot like one in property data, and the solution carries
-                over. That is where the speed comes from. Not shortcuts,
-                transfer.
-              </p>
-              <p className="mono text-[0.82rem] leading-[1.9] text-white">
-                If you are building something and the hard part is that it has
-                never been built before, that is the work I want.
-              </p>
-            </div>
-
-            <dl className="space-y-3 self-start border-t pt-4">
-              {FACTS.map(([k, v]) => (
-                <div key={k} className="flex justify-between gap-6">
-                  <dt className="mono-up">{k}</dt>
-                  <dd className="mono text-right text-white/70">{v}</dd>
+        {/* ── About ──────────────────────────────────────────────────── */}
+        <Section id="about" index="04" label="About">
+          <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr] lg:gap-24">
+            <Reveal>
+              <div className="space-y-8">
+                <p className="serif-it text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] text-white">
+                  I am an engineer who ships.
+                </p>
+                <div className="max-w-[54ch] space-y-5">
+                  <p className="mono text-[0.85rem] leading-[1.95] text-white/55">
+                    Most of what I build starts as a problem I ran into myself,
+                    or watched somebody else lose a week to, and ends as
+                    software that is actually deployed and actually used.
+                  </p>
+                  <p className="mono text-[0.85rem] leading-[1.95] text-white/55">
+                    The range is deliberate. Working across video,
+                    infrastructure, commerce, health, consumer, real estate, and
+                    finance means the patterns start to rhyme — a retrieval
+                    problem in litigation looks a lot like one in property data,
+                    and the solution carries over. That is where the speed comes
+                    from. Not shortcuts, transfer.
+                  </p>
+                  <p className="mono text-[0.85rem] leading-[1.95] text-white">
+                    If you are building something and the hard part is that it
+                    has never been built before, that is the work I want.
+                  </p>
                 </div>
-              ))}
-            </dl>
-          </div>
-        </Reveal>
-      </Section>
+              </div>
+            </Reveal>
 
-      {/* ── Contact ──────────────────────────────────────────────────── */}
-      <section id="contact" className="px-[var(--gutter)] pt-16 pb-20">
-        <Reveal>
-          <a href="mailto:connor@odeaworks.com" className="group block border-t pt-10">
-            <span className="mono-up">Start a conversation</span>
-            <span className="serif-it mt-5 block text-[clamp(2.4rem,8vw,6rem)] leading-[1.05] transition-transform duration-500 group-hover:translate-x-2">
-              connor@odeaworks.com
-            </span>
-          </a>
-        </Reveal>
-
-        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t pt-6">
-          <span className="mono">© 2026 Connor O&rsquo;Dea</span>
-          <div className="flex gap-7">
-            <a
-              href="https://github.com/connorodea"
-              className="mono transition-colors hover:text-white"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://odeaworks.com"
-              className="mono transition-colors hover:text-white"
-            >
-              Odea Works
-            </a>
-            <a
-              href="https://preecursor.com"
-              className="mono transition-colors hover:text-white"
-            >
-              Preecursor
-            </a>
+            <Reveal delay={120}>
+              <div className="flex flex-col gap-8">
+                <div className="w-[148px]">
+                  <div className="relative overflow-hidden border">
+                    <Image
+                      src="/connor.jpg"
+                      alt="Connor O'Dea"
+                      width={460}
+                      height={460}
+                      className="w-full grayscale contrast-[1.1] brightness-[.95]"
+                    />
+                  </div>
+                </div>
+                <dl className="space-y-3 border-t pt-5">
+                  {FACTS.map(([k, v]) => (
+                    <div key={k} className="flex justify-between gap-6">
+                      <dt className="mono-up">{k}</dt>
+                      <dd className="mono text-right text-white/70">{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </Reveal>
           </div>
-        </div>
-      </section>
-    </main>
+        </Section>
+
+        {/* ── Contact ────────────────────────────────────────────────── */}
+        <section
+          id="contact"
+          className="relative px-[var(--gutter)] pt-24 pb-20 sm:pt-32"
+        >
+          <Reveal>
+            <div className="border-t pt-12">
+              <p className="mono-up text-white/50">
+                05 — Start a conversation
+              </p>
+              <a
+                href="mailto:connor@odeaworks.com"
+                className="group mt-10 block"
+              >
+                <span className="serif-it block text-[clamp(2.6rem,10vw,8rem)] leading-[0.95] text-white transition-transform duration-500 group-hover:translate-x-3">
+                  Let&rsquo;s build
+                  <br />
+                  something.
+                </span>
+                <span className="mono-up mt-8 inline-block text-white/60 transition-colors group-hover:text-white">
+                  connor@odeaworks.com →
+                </span>
+              </a>
+            </div>
+          </Reveal>
+
+          <div className="mt-24 flex flex-wrap items-center justify-between gap-4 border-t pt-6">
+            <span className="mono">© 2026 Connor O&rsquo;Dea · Denver, CO</span>
+            <div className="flex gap-7">
+              <a
+                href="https://github.com/connorodea"
+                className="mono transition-colors hover:text-white"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://odeaworks.com"
+                className="mono transition-colors hover:text-white"
+              >
+                Odea Works
+              </a>
+              <a
+                href="https://preecursor.com"
+                className="mono transition-colors hover:text-white"
+              >
+                Preecursor
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
