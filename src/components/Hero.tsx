@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { BOOKING } from "@/content/booking";
 
 const Scene = dynamic(() => import("@/components/Scene"), { ssr: false });
 
@@ -55,22 +56,30 @@ export function Hero() {
           </span>
           <span className="mono-up text-white">Connor O&rsquo;Dea</span>
         </div>
-        <nav className="hidden gap-8 sm:flex">
-          {[
-            ["Work", "#work"],
-            ["Services", "#capabilities"],
-            ["About", "#about"],
-            ["Contact", "#contact"],
-          ].map(([label, href]) => (
-            <a
-              key={href}
-              href={href}
-              className="mono-up text-white/60 transition-colors hover:text-white"
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
+        <div className="flex items-center gap-6 lg:gap-8">
+          <nav className="hidden gap-6 lg:flex">
+            {[
+              ["Work", "#work"],
+              ["Services", "#capabilities"],
+              ["About", "#about"],
+              ["Contact", "#contact"],
+            ].map(([label, href]) => (
+              <a
+                key={href}
+                href={href}
+                className="mono-up text-white/60 transition-colors hover:text-white"
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+          <a
+            href={BOOKING.path}
+            className="inline-flex min-h-11 items-center gap-3 border border-white/25 px-4 py-3 font-mono text-xs text-white transition-colors hover:bg-white hover:text-black"
+          >
+            Book a meeting <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
 
       {/* Center lockup */}

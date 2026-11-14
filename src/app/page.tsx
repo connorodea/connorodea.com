@@ -4,6 +4,7 @@ import { ShippingLine } from "@/components/ShippingLine";
 import { WorkRows } from "@/components/WorkRows";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
+import { BOOKING } from "@/content/booking";
 
 const CAPABILITIES = [
   {
@@ -172,6 +173,13 @@ export default function Home() {
                 <span className="mono-up mt-8 inline-block text-white/60 transition-colors group-hover:text-white">
                   connor@odeaworks.com →
                 </span>
+              </a>
+              <a
+                href={BOOKING.path}
+                className="mt-8 inline-flex min-h-12 items-center gap-8 border px-6 py-4 font-mono text-sm text-white transition-colors hover:bg-white hover:text-black"
+              >
+                Book a 30-minute conversation
+                <span aria-hidden="true">↗</span>
               </a>
             </div>
           </Reveal>
